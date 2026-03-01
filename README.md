@@ -1,4 +1,4 @@
-# MOMbot AI — Active Learning Software for MOMbot
+# MOMbot Experiment Management + Active Learning Software
 
 > **Paper:** *A Closed-Loop Robot Scientist for Synthetic Developmental Biology*
 > Kameron Bielawski, Krishna Srinivasan, Shawn Beaulieu, Nate Gaylinn, Michael Levin, Jeantine Lunshof, Josh Bongard, Douglas Blackiston
