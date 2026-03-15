@@ -1,6 +1,6 @@
 # MOMbot Experiment Management + Active Learning Software
 
-> **Paper:** *A Closed-Loop Robot Scientist for Synthetic Developmental Biology*
+> **Paper:** *A Closed-Loop Robot Scientist for Autonomous Biological Experimentation*
 > Kameron Bielawski, Krishna Srinivasan, Shawn Beaulieu, Nate Gaylinn, Michael Levin, Jeantine Lunshof, Josh Bongard, Douglas Blackiston
 > **[Link to paper — coming soon]**
 
