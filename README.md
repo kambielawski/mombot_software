@@ -146,16 +146,72 @@ Hardware capability ranges (electrical current, vibration frequency, temperature
 
 ---
 
-## Dependencies
+## System Requirements
+
+**Operating systems.** Pure Python; expected to run on any OS with a supported Python interpreter (Linux, macOS, Windows). Tested on macOS 14.3.
+
+**Python.** Core runtime (`medea.py`, `babysitter.py`, `inverse.py`, `video_processing/`, `utils/`) tested on **Python 3.11**. Manuscript-reproduction pipeline (`data_reproduction/`) tested on **Python 3.11**.
+
+**Hardware.** The AI/control software in this repository has **no non-standard hardware requirements** — it runs on a normal desktop/laptop CPU (no GPU required). The full closed-loop experiment additionally requires the MOMbot physical platform (robot, PCBs, electrode rings, chiller, gantry, cameras, Raspberry Pi network) described in the paper; that hardware is **not** part of this codebase. All demos and reproduction scripts in this repo can be run on a standard desktop without any MOMbot hardware.
+
+**Python dependencies** (core runtime — `medea.py`, `babysitter.py`, `inverse.py`, `video_processing/`, `utils/`):
 
 ```
-numpy
-pandas
-scikit-learn
-matplotlib
-pydantic
-opencv-python (cv2)
+numpy           1.26.4
+pandas          2.2.3
+scikit-learn    1.6.1
+matplotlib      3.9.3
+pydantic        >=2,<3
+opencv-python   4.11.0.86
 ```
+
+**Additional dependencies for manuscript reproduction** (`data_reproduction/requirements.txt`):
+
+```
+scipy           1.15.2
+pymc            5.27.1
+arviz           0.23.4
+```
+
+---
+
+## Installation
+
+```bash
+git clone <this-repo-url>
+cd mombot_software
+
+# (Recommended) create an isolated environment
+python -m venv .venv && source .venv/bin/activate
+
+# Core runtime
+pip install numpy pandas scikit-learn matplotlib "pydantic>=2,<3" opencv-python
+
+# (Optional) reproduction of manuscript figure 5
+pip install -r data_reproduction/requirements.txt
+```
+
+---
+
+## Demo
+
+A small, self-contained demo dataset and analysis pipeline is included under [`data_reproduction/`](data_reproduction/). It contains the full 121-organoid `velocity_dataset.json` used in the paper and standalone figure scripts — no MOMbot hardware or Dropbox folder is needed to run it.
+
+```bash
+cd data_reproduction
+pip install -r requirements.txt
+python fig1_summary_analysis.py   # Bayesian logistic regression, bootstrap/uniform LD50, entropy
+python fig2_bin_sensitivity.py
+python fig3_al_distance.py
+python fig4_conceptual.py
+python fig5_robustness.py
+```
+
+**Expected output.** Each script writes one or more PNGs into `data_reproduction/outputs/` (figures covering the Bayesian logistic fit, LD₅₀ ≈ 148 s with credible intervals, bootstrap stability, AL-vs-uniform distance-to-LD₅₀ comparison, sampling distributions, and survival curves). Reference outputs are checked into `data_reproduction/outputs/` for visual comparison.
+
+**Expected run time on a normal desktop.** `fig1_summary_analysis.py` runs PyMC sampling and takes on the order of minutes; the other figure scripts use scikit-learn `LogisticRegression` and finish in seconds. <TODO: measure end-to-end on a normal desktop>.
+
+See [`data_reproduction/README.md`](data_reproduction/README.md) for the full methods summary and key parameters.
 
 ---
 
@@ -164,8 +220,6 @@ opencv-python (cv2)
 ```bash
 # Start the main daemon (watches for new batches and spawns babysitters)
 python medea.py
-
-# Run the inverse method directly (for testing / offline use)
 python inverse.py <batch_folder_path> <pre_velocity_file_path> <intervention_id>
 ```
 
@@ -180,6 +234,16 @@ python inverse.py <batch_folder_path> <pre_velocity_file_path> <intervention_id>
 ```
 
 where each entry is `[v_pre (px/s), estim_duration (ms), v_post (px/s)]`.
+
+### Reproducing the manuscript results
+
+All quantitative results and figures in the paper can be regenerated from the included dataset via the scripts in [`data_reproduction/`](data_reproduction/). See the [Demo](#demo) section above.
+
+---
+
+## License
+
+<TODO: add an OSI-approved LICENSE file at the repo root (e.g. MIT, BSD-3-Clause, Apache-2.0, or GPL-3.0) and reference it here. No license file is currently present.>
 
 ---
 
