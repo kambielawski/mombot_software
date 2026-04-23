@@ -44,4 +44,4 @@ Figures are saved to `outputs/`.
 1. **Bayesian logistic regression** (PyMC) on non-AL data estimates P(survival | duration) and the ID50 with credible intervals.
 2. **Bootstrap** (10k resamples) and **uniform subsampling** (equalizing duration distribution) confirm ID50 stability.
 3. **Bernoulli entropy** of the posterior mean identifies the region of maximum outcome uncertainty.
-4. **Distance-to-ID50 comparison**: AL-proposed durations are significantly closer to the (non-AL-estimated) ID50 than uniform random sampling (permutation test, Mann-Whitney U, one-sample t-test; all p < 0.0001).
+4. **Distance-to-ID50 comparison**: AL-proposed durations are significantly closer to the (non-AL-estimated) ID50 than uniform random sampling (permutation test, Mann-Whitney U, one-sample t-test).
