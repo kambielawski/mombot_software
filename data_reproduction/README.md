@@ -1,6 +1,7 @@
-# Velocity / LD50 Analysis
+# Velocity / ID50 Analysis
 
-Analysis of organoid survival under electrical stimulation, demonstrating that an active learning algorithm preferentially samples the region of highest outcome uncertainty (near the LD50).
+Analysis of organoid survival under electrical stimulation, demonstrating that an active learning algorithm preferentially samples the region of highest outcome uncertainty (near the ID50).
+The ID50 is the "Immobilization Duration" at which 50% of organoids become immobile. 
 
 ## Structure
 
@@ -10,9 +11,9 @@ velocity_analysis/
 │   └── velocity_dataset.json      # Raw data: {batch_id: [pre_vel, duration_ms, post_vel]}
 ├── outputs/                        # Generated figures (auto-created)
 ├── utils.py                        # Shared utilities: data loading, Bayesian regression, bootstrap, etc.
-├── fig1_summary_analysis.py        # Bayesian logistic regression, bootstrap/uniform LD50, entropy
-├── fig2_bin_sensitivity.py         # Uniform subsample LD50 sensitivity to bin count
-├── fig3_al_distance.py             # AL distance to LD50 vs uniform baseline (non-circular)
+├── fig1_summary_analysis.py        # Bayesian logistic regression, bootstrap/uniform ID50, entropy
+├── fig2_bin_sensitivity.py         # Uniform subsample ID50 sensitivity to bin count
+├── fig3_al_distance.py             # AL distance to ID50 vs uniform baseline (non-circular)
 ├── fig4_conceptual.py              # Schematic: naive sampling vs active learning
 ├── fig5_robustness.py              # Sampling distribution, survival curves, threshold sensitivity
 ├── requirements.txt

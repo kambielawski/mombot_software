@@ -266,7 +266,7 @@ Bielawski et al., "A Closed-Loop Robot Scientist for Synthetic Developmental Bio
 - Michael Levin²·³
 - Jeantine Lunshof⁴
 - Josh Bongard¹
-- Douglas Blackiston²·³ ✉
+- Douglas Blackiston²·³ 
 
 ¹ Department of Computer Science, University of Vermont, Burlington, USA
 ² Department of Biology, Tufts University, Medford, MA, USA
